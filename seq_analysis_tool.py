@@ -20,13 +20,13 @@ def find_orf(seq):
     return orf_seqs
 
 Entrez.email="vanssha@gmail.com"
-handle=Entrez.esearch(db="nucleotide", term="TP53 [Gene] AND Homo sapiens[Organism] AND CDS[Feature Key]", retmax=10)
+handle=Entrez.esearch(db="nuccore", term="TP53 [Gene] AND Homo sapiens[Organism] AND CDS[Feature Key]", retmax=10)
 read_rec=Entrez.read(handle)
 handle.close()
 
 id_list=read_rec["IdList"]
 fetch_handle=Entrez.efetch(
-    db="nucleotide",
+    db="nuccore",
     id=id_list,
     rettype="fasta",
     retmode="text"
